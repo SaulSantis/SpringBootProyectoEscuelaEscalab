@@ -9,12 +9,12 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "curso")
-public class Curso {
+@Table(name = "asignatura")
+public class Asignatura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_curso")
+    @Column(name = "id_asignatura")
     private Integer id;
 
     @Column(name = "nombre", length = 50)
@@ -27,12 +27,11 @@ public class Curso {
     @NotEmpty
     private String jornada;
 
-    @ManyToMany
-    @JoinTable(
-            name = "curso_asignatura",
-            joinColumns = @JoinColumn(name = "id_curso", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_asignatura", nullable = false))
-    private List<Asignatura> asignatura;
+    @Column(name = "horario")
+    @NotEmpty
+    private String horario;
 
+    @ManyToMany(mappedBy = "asignatura")
+    private List<Curso> curso;
 
 }
