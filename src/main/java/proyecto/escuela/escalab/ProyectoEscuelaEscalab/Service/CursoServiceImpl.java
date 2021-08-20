@@ -63,17 +63,12 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public Curso delete(Curso curso, Integer id) {
-        Curso cdelete = new Curso();
-        if (id != null && id > 0) {
-            Optional<Curso> optCurso = cursoRepository.deleteById(id);
-            if (optCurso.isPresent()) {
-                curso.setId(id);
-                cdelete = cursoRepository.deleteById(curso);
-            }
-        } else {
+    public void deleteById(Integer id) {
+        boolean exists = cursoRepository.existsById(id);
 
+        if (!exists) {
+            throw new IllegalStateException("El curso " + id + " no existe en nuestra base de datos");
         }
-        return cdelete;
+        cursoRepository.deleteById(id);
     }
 }

@@ -1,5 +1,6 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_curso")
     private Integer id;
 
@@ -27,11 +28,12 @@ public class Curso {
     @NotEmpty
     private String jornada;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "curso_asignatura",
             joinColumns = @JoinColumn(name = "id_curso", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_asignatura", nullable = false))
+    @JsonBackReference
     private List<Asignatura> asignatura;
 
 

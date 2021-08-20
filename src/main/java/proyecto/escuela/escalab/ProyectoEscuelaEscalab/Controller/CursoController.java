@@ -48,12 +48,13 @@ public class CursoController {
     }
 
     @PutMapping("/{id}")
-    public @ResponseBody Curso update(@PathVariable("id") Integer id, @RequestBody Curso curso) {
+    public @ResponseBody
+    Curso update(@PathVariable("id") Integer id, @RequestBody Curso curso) {
         return cursoService.update(curso, id);
     }
 
     @DeleteMapping("/{id}")
-    public @ResponseBody Curso delete(@PathVariable("id") Integer id, @RequestBody Curso curso) {
-        return cursoService.deleteById(Curso curso, Integer id);
+    public void deleteById(@PathVariable("id") Integer id) {
+        cursoService.deleteById(id);
     }
 }

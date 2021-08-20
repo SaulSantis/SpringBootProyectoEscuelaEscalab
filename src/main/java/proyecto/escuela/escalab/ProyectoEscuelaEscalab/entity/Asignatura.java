@@ -13,7 +13,7 @@ import java.util.List;
 public class Asignatura {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_asignatura")
     private Integer id;
 
@@ -31,7 +31,12 @@ public class Asignatura {
     @NotEmpty
     private String horario;
 
-    @ManyToMany(mappedBy = "asignatura")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "curso_asignatura",
+            joinColumns = @JoinColumn(name = "id_asignatura", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "id_curso", nullable = false))
     private List<Curso> curso;
+
 
 }

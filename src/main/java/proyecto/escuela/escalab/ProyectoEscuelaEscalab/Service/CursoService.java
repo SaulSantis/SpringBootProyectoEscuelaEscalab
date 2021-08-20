@@ -17,7 +17,5 @@ public interface CursoService {
 
     Curso update(Curso curso, Integer id);
 
-    void deleteById(Curso curso, Integer id);
-
-//    Curso delete(Integer id);
+    void deleteById(Integer id);
 }
