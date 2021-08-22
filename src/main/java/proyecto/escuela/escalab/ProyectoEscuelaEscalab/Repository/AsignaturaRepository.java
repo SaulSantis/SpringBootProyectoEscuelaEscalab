@@ -11,5 +11,5 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Integer>
 
     Asignatura findAsignaturaByNombre(String nombre);
 
-    Asignatura findAsignaturaCursoByJornada(String jornada);
+    Asignatura findAsignaturaByJornada(String jornada);
 }

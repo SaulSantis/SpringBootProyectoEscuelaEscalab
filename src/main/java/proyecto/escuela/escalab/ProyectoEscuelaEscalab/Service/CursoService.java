@@ -1,6 +1,5 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Service;
 
-import io.swagger.models.auth.In;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
 
 import java.util.List;

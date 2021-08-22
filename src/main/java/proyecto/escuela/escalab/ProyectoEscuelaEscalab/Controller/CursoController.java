@@ -41,20 +41,21 @@ public class CursoController {
         return cursoService.findByNombreAndJornada(nombre, jornada);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public @ResponseBody
     Curso save(@RequestBody Curso curso) {
         return cursoService.save(curso);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public @ResponseBody
     Curso update(@PathVariable("id") Integer id, @RequestBody Curso curso) {
         return cursoService.update(curso, id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         cursoService.deleteById(id);
     }
+
 }

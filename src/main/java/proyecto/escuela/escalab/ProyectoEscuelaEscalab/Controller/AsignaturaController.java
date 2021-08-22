@@ -42,19 +42,19 @@ public class AsignaturaController {
         return asignaturaService.findByNombreAndJornada(nombre, jornada);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public @ResponseBody
     Asignatura save(@RequestBody Asignatura asignatura) {
         return asignaturaService.save(asignatura);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public @ResponseBody
     Asignatura update(@PathVariable("id") Integer id, @RequestBody Asignatura asignatura) {
         return asignaturaService.update(asignatura, id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         asignaturaService.deleteById(id);
     }

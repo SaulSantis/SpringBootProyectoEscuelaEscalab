@@ -49,23 +49,22 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public Curso update(Curso curso, Integer id) {
-        Curso cupdate = new Curso();
+        Curso cursoUpdate = new Curso();
         if (id != null && id > 0) {
             Optional<Curso> optionalCurso = cursoRepository.findById(id);
             if (optionalCurso.isPresent()) {
                 curso.setId(id);
-                cupdate = cursoRepository.save(curso);
+                cursoUpdate = cursoRepository.save(curso);
             }
         } else {
 
         }
-        return cupdate;
+        return cursoUpdate;
     }
 
     @Override
     public void deleteById(Integer id) {
         boolean exists = cursoRepository.existsById(id);
-
         if (!exists) {
             throw new IllegalStateException("El curso " + id + " no existe en nuestra base de datos");
         }

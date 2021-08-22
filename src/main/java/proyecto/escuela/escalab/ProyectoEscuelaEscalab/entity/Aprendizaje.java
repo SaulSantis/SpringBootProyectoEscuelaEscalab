@@ -24,7 +24,7 @@ public class Aprendizaje {
     @Column(name = "detalleAprendizaje", length = 200)
     @Size(max = 200, message = "El detalle de Aprendizaje debe tener máximo 200 caracteres")
     @NotEmpty
-    private String aprendizaje;
+    private String detalleAprendizaje;
 
     @ManyToOne
     @JoinColumn(name = "id_contenido", nullable = false)

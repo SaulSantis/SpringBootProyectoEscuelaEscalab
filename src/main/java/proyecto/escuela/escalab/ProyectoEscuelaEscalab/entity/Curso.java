@@ -14,7 +14,7 @@ import java.util.List;
 public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_curso")
     private Integer id;
 
@@ -35,6 +35,13 @@ public class Curso {
             inverseJoinColumns = @JoinColumn(name = "id_asignatura", nullable = false))
     @JsonBackReference
     private List<Asignatura> asignatura;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "curso_profesor",
+            joinColumns = @JoinColumn(name = "id_curso", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "id_profesor", nullable = false))
+    private List<Profesor> profesor;
 
 
 }

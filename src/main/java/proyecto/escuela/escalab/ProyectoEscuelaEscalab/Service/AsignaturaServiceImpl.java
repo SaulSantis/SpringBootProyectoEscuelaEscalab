@@ -31,11 +31,11 @@ public class AsignaturaServiceImpl implements AsignaturaService{
         Asignatura asignatura = new Asignatura();
         if (nombre == null || nombre.equalsIgnoreCase("")) {
             if (jornada != null && !"".equalsIgnoreCase(nombre)) {
-                asignatura = asignaturaRepository.findAsignaturaByNombreAndJornada(jornada);
+                asignatura = asignaturaRepository.findAsignaturaByJornada(jornada);
             }
         } else {
             if (jornada == null || "".equalsIgnoreCase(jornada)) {
-                asignatura = asignaturaRepository.findAsignaturaByNombreAndJornada(nombre);
+                asignatura = asignaturaRepository.findAsignaturaByNombre(nombre);
             } else {
                 asignatura = asignaturaRepository.findAsignaturaByNombreAndJornada(nombre, jornada);
             }
@@ -50,17 +50,17 @@ public class AsignaturaServiceImpl implements AsignaturaService{
 
     @Override
     public Asignatura update(Asignatura asignatura, Integer id) {
-        Asignatura asigUpdate = new Asignatura();
+        Asignatura asignaturaupdate = new Asignatura();
         if (id != null && id > 0) {
             Optional<Asignatura> optionalAsignatura = asignaturaRepository.findById(id);
             if (optionalAsignatura.isPresent()) {
                 asignatura.setId(id);
-                asigUpdate = asignaturaRepository.save(asignatura);
+                asignaturaupdate = asignaturaRepository.save(asignatura);
             }
         } else {
 
         }
-        return asigUpdate;
+        return asignaturaupdate;
     }
 
     @Override
