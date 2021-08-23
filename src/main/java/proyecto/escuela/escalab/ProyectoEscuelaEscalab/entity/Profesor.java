@@ -65,7 +65,6 @@ public class Profesor {
             name = "profesor_asignatura",
             joinColumns = @JoinColumn(name = "id_profesor", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_asignatura", nullable = false))
-    @JsonBackReference
     private List<Profesor> profesor;
 
 
