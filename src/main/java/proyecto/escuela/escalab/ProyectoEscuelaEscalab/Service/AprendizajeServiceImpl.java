@@ -1,9 +1,9 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import proyecto.escuela.escalab.ProyectoEscuelaEscalab.Repository.AprendizajeRepository;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Aprendizaje;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.AprendizajeRepository;
 
 import java.util.List;
 import java.util.Optional;

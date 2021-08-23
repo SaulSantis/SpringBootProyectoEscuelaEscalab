@@ -1,4 +1,4 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Profesor;
 

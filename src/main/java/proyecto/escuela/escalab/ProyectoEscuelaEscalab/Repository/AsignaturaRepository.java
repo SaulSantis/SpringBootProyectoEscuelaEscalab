@@ -1,4 +1,4 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Repository;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

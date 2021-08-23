@@ -1,7 +1,6 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Asignatura;
-import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
 
 import java.util.List;
 

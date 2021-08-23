@@ -1,4 +1,4 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Controller;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
