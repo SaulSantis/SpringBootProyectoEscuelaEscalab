@@ -2,8 +2,8 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import proyecto.escuela.escalab.ProyectoEscuelaEscalab.Service.ContenidoService;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Contenido;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.ContenidoService;
 
 import java.util.List;
 

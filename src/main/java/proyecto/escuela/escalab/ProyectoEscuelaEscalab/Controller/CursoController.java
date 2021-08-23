@@ -1,9 +1,9 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.Controller;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import proyecto.escuela.escalab.ProyectoEscuelaEscalab.Service.CursoService;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.CursoService;
 
 import java.util.List;
 
