@@ -5,29 +5,21 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Data
-@Table(name = "aprendizaje")
-public class Aprendizaje {
+@Table(name = "rol")
+public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_aprendizaje")
+    @Column(name = "id_rol")
     private Integer id;
 
     @Column(name = "nombre", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
     @NotEmpty
     private String nombre;
-
-    @Column(name = "detalleAprendizaje", length = 200)
-    @Size(max = 200, message = "El detalle de Aprendizaje debe tener máximo 200 caracteres")
-    @NotEmpty
-    private String detalleAprendizaje;
-
-    @ManyToOne
-    @JoinColumn(name = "id_contenido", nullable = false)
-    private Contenido contenido;
 
 }

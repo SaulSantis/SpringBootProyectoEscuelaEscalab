@@ -1,26 +1,25 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "profesor")
-public class Profesor {
+@Table(name = "apoderado")
+public class Apoderado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_profesor")
+    @Column(name = "id_apoderado")
     private Integer id;
 
     @Column(name = "nombres", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar ambos Nombres")
+    @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
     @NotEmpty
     private String nombres;
 
@@ -28,6 +27,16 @@ public class Profesor {
     @Size(min = 4, max = 50, message = "Debes ingresar ambos Apellidos")
     @NotEmpty
     private String apellidos;
+
+    @Column(name = "parentesco", length = 50)
+    @Size(min = 4, max = 50, message = "Debes ingresar un Parentesco válido")
+    @NotEmpty
+    private String parentesco;
+
+    @Column(name = "fecha_nacimiento")
+    @Size
+    @NotEmpty
+    private LocalDate fechaNacimiento;
 
     @Column(name = "dni", length = 10)
     @Size(min = 9, max = 10, message = "Debes ingresar un Dni válido")
@@ -45,20 +54,13 @@ public class Profesor {
     private String telefono;
 
     @Column(name = "email", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
+    @Size(min = 4, max = 50, message = "Debes ingresar un email válido")
     @Email(message = "Debes ingresar un tipo de Email válido")
     @NotEmpty
     private String email;
 
-    @Column(name = "imagen")
-    private String imagen;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "curso_profesor",
-            joinColumns = @JoinColumn(name = "id_curso", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_profesor",nullable = false)
-    )
-    private List<Curso> curso;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_alumno", updatable = false, nullable = false)
+    private Alumno alumno;
 
 }

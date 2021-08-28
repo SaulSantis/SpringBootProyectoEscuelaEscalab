@@ -1,7 +1,5 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,12 +9,12 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "curso")
-public class Curso {
+@Table(name = "usuario")
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_curso")
+    @Column(name = "id_usuario")
     private Integer id;
 
     @Column(name = "nombre", length = 50)
@@ -24,15 +22,21 @@ public class Curso {
     @NotEmpty
     private String nombre;
 
-    @Column(name = "jornada", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar un tipo de Jornada válido")
+    @Column(name = "clave")
+    @Size
     @NotEmpty
-    private String jornada;
+    private String clave;
 
-    @ManyToMany(mappedBy = "curso")
-    private List<Asignatura> asignatura;
+    @Column(name = "estado")
+    @Size
+    @NotEmpty
+    private Boolean estado;
 
-    @ManyToMany(mappedBy = "curso")
-    private List<Profesor> profesor;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuario_rol",
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "id_rol", nullable = false))
+    private List<Rol> roles;
 
 }
