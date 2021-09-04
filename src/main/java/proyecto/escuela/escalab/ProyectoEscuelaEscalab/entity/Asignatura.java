@@ -1,13 +1,10 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,12 +31,7 @@ public class Asignatura {
     @NotEmpty
     private String horario;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "curso_asignatura",
-            joinColumns = @JoinColumn(name = "id_curso", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_asignatura",nullable = false)
-    )
-    private List<Curso> curso;
+    @OneToMany(mappedBy = "asignatura")
+    private List<Contenido> contenido;
 
 }

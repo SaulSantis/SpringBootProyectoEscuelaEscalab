@@ -3,6 +3,7 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.CursoRepository;
 
 import java.util.List;
@@ -16,13 +17,20 @@ public class CursoServiceImpl implements CursoService {
 
     @Override
     public List<Curso> findAll() {
+        List<Curso> cursoList = cursoRepository.findAll();
+        if (cursoList.isEmpty())
+            throw new ModelNotFoundException("No existen Cursos en la base de datos");
         return cursoRepository.findAll();
     }
 
     @Override
     public Curso findById(Integer id) {
         Optional<Curso> cursoOptional = cursoRepository.findById(id);
-        return cursoOptional.orElseGet(Curso::new);
+        if (cursoOptional.isPresent()){
+            return cursoOptional.get();
+        }else {
+            throw new ModelNotFoundException("El curso no existe o la búsqueda es nula");
+        }
     }
 
     @Override
@@ -57,7 +65,7 @@ public class CursoServiceImpl implements CursoService {
                 cursoUpdate = cursoRepository.save(curso);
             }
         } else {
-
+            throw new ModelNotFoundException("El curso que ingresaste no existe");
         }
         return cursoUpdate;
     }
@@ -66,7 +74,7 @@ public class CursoServiceImpl implements CursoService {
     public void deleteById(Integer id) {
         boolean exists = cursoRepository.existsById(id);
         if (!exists) {
-            throw new IllegalStateException("El curso " + id + " no existe en nuestra base de datos");
+            throw new ModelNotFoundException("El curso que deseas eliminar no esta en la base de datos");
         }
         cursoRepository.deleteById(id);
     }

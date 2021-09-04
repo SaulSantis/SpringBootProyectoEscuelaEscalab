@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -34,8 +35,7 @@ public class Apoderado {
     private String parentesco;
 
     @Column(name = "fecha_nacimiento")
-    @Size
-    @NotEmpty
+    @NotNull
     private LocalDate fechaNacimiento;
 
     @Column(name = "dni", length = 10)
@@ -59,8 +59,8 @@ public class Apoderado {
     @NotEmpty
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_alumno", updatable = false, nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_alumno", nullable = false)
     private Alumno alumno;
 
 }

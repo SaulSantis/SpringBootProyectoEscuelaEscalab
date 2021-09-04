@@ -1,6 +1,5 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -52,13 +51,5 @@ public class Profesor {
 
     @Column(name = "imagen")
     private String imagen;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "curso_profesor",
-            joinColumns = @JoinColumn(name = "id_curso", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_profesor",nullable = false)
-    )
-    private List<Curso> curso;
 
 }

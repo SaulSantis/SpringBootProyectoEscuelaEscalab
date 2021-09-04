@@ -1,5 +1,6 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,6 +28,8 @@ public class Contenido {
     private String detalleContenido;
 
     @ManyToOne
-    @JoinColumn(name = "id_asignatura", nullable = false)
+    @JoinColumn(name = "id_asignatura",nullable = false)
+    @JsonIgnoreProperties("contenido")
     private Asignatura asignatura;
+
 }

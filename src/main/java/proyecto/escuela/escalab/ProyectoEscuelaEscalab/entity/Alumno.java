@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -29,6 +30,7 @@ public class Alumno {
     private String apellidos;
 
     @Column(name = "fecha_nacimiento")
+    @NotNull
     private LocalDate fechaNacimiento;
 
     @Column(name = "dni", length = 10)
@@ -54,16 +56,5 @@ public class Alumno {
 
     @Column(name = "imagen")
     private String imagen;
-
-    @ManyToOne
-    @JoinColumn(name = "id_curso", nullable = false)
-    private Curso curso;
-
-    @ManyToOne
-    @JoinColumn(name = "id_ficha", nullable = false)
-    private FichaMedica fichaMedica;
-
-    @OneToOne(mappedBy = "alumno", cascade = CascadeType.ALL)
-    private Apoderado apoderado;
 
 }

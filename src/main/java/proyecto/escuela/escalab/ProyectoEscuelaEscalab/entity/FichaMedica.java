@@ -4,7 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -16,43 +17,44 @@ public class FichaMedica {
     @Column(name = "id_ficha")
     private Integer id;
 
+    @Column(name = "fecha")
+    @NotNull
+    private LocalDate fecha;
+
     @Column(name = "edad")
-    @Size
-    @NotEmpty
-    private Float edad;
+    @NotNull
+    private Integer edad;
 
     @Column(name = "peso")
-    @Size
-    @NotEmpty
-    private Float peso;
+    @NotNull
+    private Double peso;
 
-    @Column(name = "talla")
-    @Size
-    @NotEmpty
-    private Float talla;
+    @Column(name = "estatura")
+    @NotNull
+    private Double estatura;
 
     @Column(name = "diabetico")
-    @Size
-    @NotEmpty
+    @NotNull
     private Boolean diabetico;
 
     @Column(name = "problemasCorazon")
-    @Size
-    @NotEmpty
+    @NotNull
     private Boolean problemasCorazon;
 
     @Column(name = "alergias")
-    @Size
-    @NotEmpty
+    @NotNull
     private Boolean alergias;
 
     @Column(name = "discapacidad")
-    @Size
     @NotEmpty
     private String discapacidad;
 
     @Column(name = "imagen")
-    @Size
     @NotEmpty
     private String imagen;
+
+    @ManyToOne
+    @JoinColumn(name = "id_alumno", nullable = false)
+    private Alumno alumno;
+
 }

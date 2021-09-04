@@ -2,14 +2,13 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.FichaMedica;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.FichaMedicaService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/fichaMedica")
+@RequestMapping("/ficha_medica")
 public class FichaMedicaController {
 
     @Autowired
