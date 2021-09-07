@@ -1,7 +1,5 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -9,7 +7,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
 @Table(name = "menu")
 public class Menu {
 
@@ -37,4 +34,44 @@ public class Menu {
             joinColumns = @JoinColumn(name = "id_menu", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_rol", nullable = false))
     private List<Rol> roles;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public LocalDateTime getIcono() {
+        return icono;
+    }
+
+    public void setIcono(LocalDateTime icono) {
+        this.icono = icono;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
 }

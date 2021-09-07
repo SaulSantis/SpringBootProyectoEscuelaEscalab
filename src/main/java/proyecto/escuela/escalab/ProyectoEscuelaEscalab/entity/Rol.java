@@ -1,13 +1,10 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Data
 @Table(name = "rol")
 public class Rol {
 
@@ -21,4 +18,19 @@ public class Rol {
     @NotEmpty
     private String nombre;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

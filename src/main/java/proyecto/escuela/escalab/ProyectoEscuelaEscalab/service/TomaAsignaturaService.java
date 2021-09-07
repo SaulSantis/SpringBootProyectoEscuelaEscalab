@@ -1,0 +1,18 @@
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
+
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.TomaAsignatura;
+
+import java.util.List;
+
+public interface TomaAsignaturaService {
+
+    List<TomaAsignatura> findAll();
+
+    TomaAsignatura findById(Integer id);
+
+    TomaAsignatura save(TomaAsignatura tomaAsignatura);
+
+    TomaAsignatura update(TomaAsignatura tomaAsignatura, Integer id);
+
+    void deleteById(Integer id);
+}

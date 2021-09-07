@@ -1,14 +1,12 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Data
 @Table(name = "contenido")
 public class Contenido {
 
@@ -32,4 +30,35 @@ public class Contenido {
     @JsonIgnoreProperties("contenido")
     private Asignatura asignatura;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDetalleContenido() {
+        return detalleContenido;
+    }
+
+    public void setDetalleContenido(String detalleContenido) {
+        this.detalleContenido = detalleContenido;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
 }

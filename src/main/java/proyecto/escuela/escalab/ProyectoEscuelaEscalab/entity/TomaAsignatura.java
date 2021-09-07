@@ -5,12 +5,12 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "registro_academico")
-public class RegistroAcademico {
+@Table(name = "toma_asignatura")
+public class TomaAsignatura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_registro_academico")
+    @Column(name = "id_toma_asignatura")
     private Integer id;
 
     @Column(name = "fecha_registro")
@@ -18,16 +18,16 @@ public class RegistroAcademico {
     private LocalDate fechaRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "id_alumno", nullable = false)
-    private Alumno alumno;
-
-    @ManyToOne
-    @JoinColumn(name = "id_profesor", nullable = false)
-    private Profesor profesor;
+    @JoinColumn(name = "id_asignatura", nullable = false)
+    private Asignatura asignatura;
 
     @ManyToOne
     @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;
+
+    @ManyToOne
+    @JoinColumn(name = "id_profesor", nullable = false)
+    private Profesor profesor;
 
     public Integer getId() {
         return id;
@@ -45,20 +45,12 @@ public class RegistroAcademico {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
+    public Asignatura getAsignatura() {
+        return asignatura;
     }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-    }
-
-    public Profesor getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
     }
 
     public Curso getCurso() {
@@ -67,5 +59,13 @@ public class RegistroAcademico {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 }

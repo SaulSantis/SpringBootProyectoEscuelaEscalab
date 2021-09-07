@@ -17,13 +17,13 @@ public class RegistroAcademicoController {
         @GetMapping
         public @ResponseBody
         List<RegistroAcademico> findAll() {
-            return registroAcademicoService.findAll();
+                return registroAcademicoService.findAll();
         }
 
         @GetMapping("/{id}")
         public @ResponseBody
         RegistroAcademico findById(@PathVariable("id") Integer id) {
-            return registroAcademicoService.findById(id);
+                return registroAcademicoService.findById(id);
         }
 
         @PostMapping("/save")
@@ -40,6 +40,6 @@ public class RegistroAcademicoController {
 
         @DeleteMapping("/delete/{id}")
         public void deleteById(@PathVariable("id") Integer id) {
-            registroAcademicoService.deleteById(id);
+                registroAcademicoService.deleteById(id);
         }
 }

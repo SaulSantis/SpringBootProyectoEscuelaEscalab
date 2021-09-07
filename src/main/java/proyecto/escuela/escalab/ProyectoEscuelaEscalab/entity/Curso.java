@@ -1,15 +1,12 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
-@Data
 @Table(name = "curso")
 public class Curso {
 
@@ -30,11 +27,27 @@ public class Curso {
     @NotEmpty
     private String jornada;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "curso_asignatura",
-            joinColumns = @JoinColumn(name = "id_curso", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_asignatura", nullable = false)
-    )
-    private List<Asignatura> asignatura;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(String jornada) {
+        this.jornada = jornada;
+    }
 }
