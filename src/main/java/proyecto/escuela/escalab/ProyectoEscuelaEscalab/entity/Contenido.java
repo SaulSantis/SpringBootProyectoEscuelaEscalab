@@ -20,7 +20,7 @@ public class Contenido {
     @NotEmpty
     private String nombre;
 
-    @Column(name = "detalle_Contenido", length = 200)
+    @Column(name = "detalle_contenido", length = 200)
     @Size(max = 200, message = "El contenido debe tener máximo 200 caracteres")
     @NotEmpty
     private String detalleContenido;

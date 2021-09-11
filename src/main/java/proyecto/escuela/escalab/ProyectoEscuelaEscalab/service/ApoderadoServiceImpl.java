@@ -3,7 +3,7 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Apoderado;
-import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.ApoderadoRepository;
 
 import java.util.List;
@@ -17,13 +17,37 @@ public class ApoderadoServiceImpl implements ApoderadoService{
 
     @Override
     public List<Apoderado> findAll() {
+        List<Apoderado> apoderadoList = apoderadoRepository.findAll();
+        if (apoderadoList.isEmpty())
+            throw new ModelNotFoundException("No existen Apoderados en la base de datos");
         return apoderadoRepository.findAll();
     }
 
     @Override
     public Apoderado findById(Integer id) {
         Optional<Apoderado> apoderadoOptional = apoderadoRepository.findById(id);
-        return apoderadoOptional.orElseGet(Apoderado::new);
+        if (apoderadoOptional.isPresent()){
+            return apoderadoOptional.get();
+        }else {
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
+        }
+    }
+
+    @Override
+    public Apoderado findByDniAndNombres(String dni, String nombres) {
+        Apoderado apoderado = new Apoderado();
+        if (dni == null || dni.equalsIgnoreCase("")) {
+            if (nombres != null && !"".equalsIgnoreCase(dni)) {
+                apoderado = apoderadoRepository.findApoderadoByNombres(nombres);
+            }
+        } else {
+            if (nombres == null || "".equalsIgnoreCase(nombres)) {
+                apoderado = apoderadoRepository.findApoderadoByDni(dni);
+            } else {
+                apoderado = apoderadoRepository.findApoderadoByDniAndNombres(dni, nombres);
+            }
+        }
+        return apoderado;
     }
 
     @Override
@@ -41,7 +65,7 @@ public class ApoderadoServiceImpl implements ApoderadoService{
                 apoderadoUpdate = apoderadoRepository.save(apoderado);
             }
         } else {
-
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return apoderadoUpdate;
     }
@@ -50,7 +74,7 @@ public class ApoderadoServiceImpl implements ApoderadoService{
     public void deleteById(Integer id) {
         boolean exists = apoderadoRepository.existsById(id);
         if (!exists) {
-            throw new IllegalStateException("El Apoderado " + id + " no existe en nuestra base de datos");
+            throw new IllegalStateException("" + id + " no existe en nuestra base de datos");
         }
         apoderadoRepository.deleteById(id);
     }

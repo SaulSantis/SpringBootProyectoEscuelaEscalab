@@ -26,10 +26,10 @@ public class CursoServiceImpl implements CursoService {
     @Override
     public Curso findById(Integer id) {
         Optional<Curso> cursoOptional = cursoRepository.findById(id);
-        if (cursoOptional.isPresent()){
+        if (cursoOptional.isPresent()) {
             return cursoOptional.get();
-        }else {
-            throw new ModelNotFoundException("El curso no existe o la búsqueda es nula");
+        } else {
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }
 
@@ -37,7 +37,7 @@ public class CursoServiceImpl implements CursoService {
     public Curso findByNombreAndJornada(String nombre, String jornada) {
         Curso curso = new Curso();
         if (nombre == null || nombre.equalsIgnoreCase("")) {
-            if (jornada != null && !"".equalsIgnoreCase(nombre)) {
+            if (jornada != null && !"".equalsIgnoreCase(jornada)) {
                 curso = cursoRepository.findCursoByJornada(jornada);
             }
         } else {
@@ -65,7 +65,7 @@ public class CursoServiceImpl implements CursoService {
                 cursoUpdate = cursoRepository.save(curso);
             }
         } else {
-            throw new ModelNotFoundException("El curso que ingresaste no existe");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return cursoUpdate;
     }
@@ -74,7 +74,7 @@ public class CursoServiceImpl implements CursoService {
     public void deleteById(Integer id) {
         boolean exists = cursoRepository.existsById(id);
         if (!exists) {
-            throw new ModelNotFoundException("El curso que deseas eliminar no esta en la base de datos");
+            throw new IllegalStateException("" + id + " no existe en nuestra base de datos");
         }
         cursoRepository.deleteById(id);
     }

@@ -28,7 +28,7 @@ public class Alumno {
 
     @Column(name = "fecha_nacimiento")
     @NotNull
-    private LocalDate fechaNacimiento;
+    private LocalDate fecha_nacimiento;
 
     @Column(name = "dni", length = 10)
     @Size(min = 9, max = 10, message = "Debes ingresar un Dni válido")
@@ -47,7 +47,7 @@ public class Alumno {
 
     @Column(name = "email", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un email válido")
-    @Email(message = "Debes ingresar un tipo de Email válido")
+    @Email(message = "Debes ingresar un email válido")
     @NotEmpty
     private String email;
 
@@ -78,13 +78,9 @@ public class Alumno {
         this.apellidos = apellidos;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
+    public LocalDate getFecha_nacimiento() {return fecha_nacimiento;}
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {this.fecha_nacimiento = fecha_nacimiento;}
 
     public String getDni() {
         return dni;

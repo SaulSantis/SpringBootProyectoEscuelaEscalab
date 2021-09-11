@@ -19,20 +19,18 @@ import java.time.LocalDateTime;
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones(
-            Exception ex, WebRequest request) {
+    public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones(Exception ex, WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<ExceptionResponse>(er, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(er, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public final ResponseEntity<ExceptionResponse> manejarModeloException(ConstraintViolationException ex,
-                                                                          WebRequest request) {
+    public final ResponseEntity<ExceptionResponse> manejarModeloException(ConstraintViolationException ex, WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<ExceptionResponse>(er, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(er, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
@@ -40,7 +38,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers, HttpStatus status, WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<Object>(er, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(er, HttpStatus.BAD_REQUEST);
     }
 }
 

@@ -29,7 +29,7 @@ public class RegistroAcademicoServiceImpl implements RegistroAcademicoService{
         if (registroAcademicoOptional.isPresent()){
             return registroAcademicoOptional.get();
         }else {
-            throw new ModelNotFoundException("El Registro Académico no existe o la búsqueda es nula");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }
 
@@ -48,7 +48,7 @@ public class RegistroAcademicoServiceImpl implements RegistroAcademicoService{
                 registroAcademicoUpdate = registroAcademicoRepository.save(registroAcademico);
             }
         } else {
-            throw new ModelNotFoundException("El Registro Académico que ingresaste no existe");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return registroAcademicoUpdate;
     }
@@ -57,7 +57,7 @@ public class RegistroAcademicoServiceImpl implements RegistroAcademicoService{
     public void deleteById(Integer id) {
         boolean exists = registroAcademicoRepository.existsById(id);
         if (!exists) {
-            throw new ModelNotFoundException("El Registro Académico que deseas eliminar no esta en la base de datos");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         registroAcademicoRepository.deleteById(id);
     }

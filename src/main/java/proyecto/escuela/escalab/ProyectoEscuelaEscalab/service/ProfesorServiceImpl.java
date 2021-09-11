@@ -3,6 +3,7 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Profesor;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.ProfesorRepository;
 
 import java.util.List;
@@ -16,13 +17,20 @@ public class ProfesorServiceImpl implements ProfesorService{
 
     @Override
     public List<Profesor> findAll() {
+        List<Profesor> profesorsList = profesorRepository.findAll();
+        if (profesorsList.isEmpty())
+            throw new ModelNotFoundException("No existen Profesores en la base de datos");
         return profesorRepository.findAll();
     }
 
     @Override
     public Profesor findById(Integer id) {
         Optional<Profesor> profesorOptional = profesorRepository.findById(id);
-        return profesorOptional.orElseGet(Profesor::new);
+        if (profesorOptional.isPresent()){
+            return profesorOptional.get();
+        }else {
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
+        }
     }
 
     @Override
@@ -40,7 +48,7 @@ public class ProfesorServiceImpl implements ProfesorService{
                 profesorUpdate = profesorRepository.save(profesor);
             }
         } else {
-
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return profesorUpdate;
     }
@@ -49,7 +57,7 @@ public class ProfesorServiceImpl implements ProfesorService{
     public void deleteById(Integer id) {
         boolean exists = profesorRepository.existsById(id);
         if (!exists) {
-            throw new IllegalStateException("El Profesor " + id + " no existe en nuestra base de datos");
+            throw new IllegalStateException("" + id + " no existe en nuestra base de datos");
         }
         profesorRepository.deleteById(id);
     }

@@ -3,6 +3,7 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.FichaMedica;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.FichaMedicaRepository;
 
 import java.util.List;
@@ -16,13 +17,20 @@ public class FichaMedicaServiceImpl implements FichaMedicaService {
 
     @Override
     public List<FichaMedica> findAll() {
+        List<FichaMedica> fichaMedicaList = fichaMedicaRepository.findAll();
+        if (fichaMedicaList.isEmpty())
+            throw new ModelNotFoundException("No existen Fichas Medicas en la base de datos");
         return fichaMedicaRepository.findAll();
     }
 
     @Override
     public FichaMedica findById(Integer id) {
         Optional<FichaMedica> fichaMedicaOptional = fichaMedicaRepository.findById(id);
-        return fichaMedicaOptional.orElseGet(FichaMedica::new);
+        if (fichaMedicaOptional.isPresent()){
+            return fichaMedicaOptional.get();
+        }else {
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
+        }
     }
 
     @Override
@@ -40,7 +48,7 @@ public class FichaMedicaServiceImpl implements FichaMedicaService {
                 fichaMedicaUpdate = fichaMedicaRepository.save(fichaMedica);
             }
         } else {
-
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return fichaMedicaUpdate;
     }
@@ -49,7 +57,7 @@ public class FichaMedicaServiceImpl implements FichaMedicaService {
     public void deleteById(Integer id) {
         boolean exists = fichaMedicaRepository.existsById(id);
         if (!exists) {
-            throw new IllegalStateException("La Ficha Medica " + id + " no existe en nuestra base de datos");
+            throw new IllegalStateException("" + id + " no existe en nuestra base de datos");
         }
         fichaMedicaRepository.deleteById(id);
     }

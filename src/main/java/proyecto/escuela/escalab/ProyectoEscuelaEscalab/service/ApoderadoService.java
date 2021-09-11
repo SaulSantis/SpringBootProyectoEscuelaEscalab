@@ -11,6 +11,8 @@ public interface ApoderadoService {
 
     Apoderado findById(Integer id);
 
+    Apoderado findByDniAndNombres(String dni, String nombres);
+
     Apoderado save(Apoderado apoderado);
 
     Apoderado update(Apoderado apoderado, Integer id);

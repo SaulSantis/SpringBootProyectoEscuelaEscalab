@@ -40,8 +40,8 @@ public class Profesor {
     private String telefono;
 
     @Column(name = "email", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
-    @Email(message = "Debes ingresar un tipo de Email válido")
+    @Size(min = 4, max = 50, message = "Debes ingresar un email válido")
+    @Email(message = "Debes ingresar un email válido")
     @NotEmpty
     private String email;
 

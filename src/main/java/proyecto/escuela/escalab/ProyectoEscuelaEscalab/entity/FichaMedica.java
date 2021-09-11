@@ -1,8 +1,7 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -19,14 +18,20 @@ public class FichaMedica {
     private LocalDate fecha;
 
     @Column(name = "edad")
+    @Min(value = 1, message = "Debe ingresar edad entre 1 y 99")
+    @Max(value = 100, message = "Debe ingresar edad entre 1 y 100")
     @NotNull
     private Integer edad;
 
     @Column(name = "peso")
+    @Min(value = 1, message = "Debe ingresar kilos entre 1 y 200")
+    @Max(value = 200, message = "Debe ingresar kilos entre 1 y 200")
     @NotNull
     private Double peso;
 
     @Column(name = "estatura")
+    @Min(value = 1,message = "Debe ingresar estatura entre 1 y 2 metros")
+    @Max(value = 2, message = "Debe ingresar estatura entre 1 y 2 metros")
     @NotNull
     private Double estatura;
 
@@ -36,7 +41,7 @@ public class FichaMedica {
 
     @Column(name = "problemasCorazon")
     @NotNull
-    private Boolean problemasCorazon;
+    private Boolean problemas_corazon;
 
     @Column(name = "alergias")
     @NotNull
@@ -102,13 +107,9 @@ public class FichaMedica {
         this.diabetico = diabetico;
     }
 
-    public Boolean getProblemasCorazon() {
-        return problemasCorazon;
-    }
+    public Boolean getProblemas_corazon() {return problemas_corazon;}
 
-    public void setProblemasCorazon(Boolean problemasCorazon) {
-        this.problemasCorazon = problemasCorazon;
-    }
+    public void setProblemas_corazon(Boolean problemas_corazon) {this.problemas_corazon = problemas_corazon;}
 
     public Boolean getAlergias() {
         return alergias;

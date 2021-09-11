@@ -3,6 +3,7 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Contenido;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.ContenidoRepository;
 
 import java.util.List;
@@ -16,13 +17,20 @@ public class ContenidoServiceImpl implements ContenidoService {
 
     @Override
     public List<Contenido> findAll() {
+        List<Contenido> contenidoList = contenidoRepository.findAll();
+        if (contenidoList.isEmpty())
+            throw new ModelNotFoundException("No existen Contenidos en la base de datos");
         return contenidoRepository.findAll();
-    }
+}
 
     @Override
     public Contenido findById(Integer id) {
         Optional<Contenido> contenidoOptional = contenidoRepository.findById(id);
-        return contenidoOptional.orElseGet(Contenido::new);
+        if (contenidoOptional.isPresent()){
+            return contenidoOptional.get();
+        }else {
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
+        }
     }
 
     @Override
@@ -40,7 +48,7 @@ public class ContenidoServiceImpl implements ContenidoService {
                 contenidoUpdate = contenidoRepository.save(contenido);
             }
         } else {
-
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return contenidoUpdate;
     }
@@ -49,7 +57,7 @@ public class ContenidoServiceImpl implements ContenidoService {
     public void deleteById(Integer id) {
         boolean exists = contenidoRepository.existsById(id);
         if (!exists) {
-            throw new IllegalStateException("El contenido " + id + " no existe en nuestra base de datos");
+            throw new IllegalStateException("" + id + " no existe en nuestra base de datos");
         }
         contenidoRepository.deleteById(id);
     }

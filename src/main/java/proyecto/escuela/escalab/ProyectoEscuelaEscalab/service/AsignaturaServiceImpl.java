@@ -3,6 +3,7 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Asignatura;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.AsignaturaRepository;
 
 import java.util.List;
@@ -16,13 +17,20 @@ public class AsignaturaServiceImpl implements AsignaturaService{
 
     @Override
     public List<Asignatura> findAll() {
+        List<Asignatura> asignaturaList = asignaturaRepository.findAll();
+        if (asignaturaList.isEmpty())
+            throw new ModelNotFoundException("No existen Asignaturas en la base de datos");
         return asignaturaRepository.findAll();
     }
 
     @Override
     public Asignatura findById(Integer id) {
         Optional<Asignatura> asignaturaOptional = asignaturaRepository.findById(id);
-        return asignaturaOptional.orElseGet(Asignatura::new);
+        if (asignaturaOptional.isPresent()){
+            return asignaturaOptional.get();
+        }else {
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
+        }
     }
 
     @Override
@@ -57,7 +65,7 @@ public class AsignaturaServiceImpl implements AsignaturaService{
                 asignaturaupdate = asignaturaRepository.save(asignatura);
             }
         } else {
-
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return asignaturaupdate;
     }
@@ -65,9 +73,8 @@ public class AsignaturaServiceImpl implements AsignaturaService{
     @Override
     public void deleteById(Integer id) {
         boolean exists = asignaturaRepository.existsById(id);
-
         if (!exists) {
-            throw new IllegalStateException("La asignatura que intentas eliminar no existe en nuestra base de datos");
+            throw new IllegalStateException("" + id + " no existe en nuestra base de datos");
         }
         asignaturaRepository.deleteById(id);
     }

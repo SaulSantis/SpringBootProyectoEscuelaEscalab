@@ -29,7 +29,7 @@ public class TomaAsignaturaServiceImpl implements TomaAsignaturaService {
         if (tomaAsignaturaOptionalOptional.isPresent()){
             return tomaAsignaturaOptionalOptional.get();
         }else {
-            throw new ModelNotFoundException("Toma de asignatura no existe o la búsqueda es nula");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }
 
@@ -48,7 +48,7 @@ public class TomaAsignaturaServiceImpl implements TomaAsignaturaService {
                 tomaAsignaturaUpdate = tomaAsignaturaRepository.save(tomaAsignatura);
             }
         } else {
-            throw new ModelNotFoundException("La toma de asignatura que ingresaste no existe");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         return tomaAsignaturaUpdate;
     }
@@ -57,7 +57,7 @@ public class TomaAsignaturaServiceImpl implements TomaAsignaturaService {
     public void deleteById(Integer id) {
         boolean exists = tomaAsignaturaRepository.existsById(id);
         if (!exists) {
-            throw new ModelNotFoundException("La toma de asignatura que deseas eliminar no esta en la base de datos");
+            throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
         tomaAsignaturaRepository.deleteById(id);
     }

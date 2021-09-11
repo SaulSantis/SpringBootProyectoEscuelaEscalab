@@ -48,16 +48,9 @@ public class CursoController {
         return cursoService.findById(id);
     }
 
-    @GetMapping("/nombre/{nombre}/jornada/{jornada}")
+    @GetMapping("/busqueda")
     public @ResponseBody
-    Curso findByNombreAndJornada(@PathVariable("nombre") String nombre,
-                                 @PathVariable("jornada") String jornada) {
-        return cursoService.findByNombreAndJornada(nombre, jornada);
-    }
-
-    @GetMapping("/nombreAndJornada")
-    public @ResponseBody
-    Curso findByNombreAndJornada2(@RequestParam(value = "nombre", required = false) String nombre,
+    Curso findByNombreAndJornada(@RequestParam(value = "nombre", required = false) String nombre,
                                   @RequestParam(value = "jornada", required = false) String jornada) {
         return cursoService.findByNombreAndJornada(nombre, jornada);
     }

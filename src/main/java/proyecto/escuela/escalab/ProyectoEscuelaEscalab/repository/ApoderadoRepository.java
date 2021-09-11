@@ -6,4 +6,12 @@ import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Apoderado;
 
 @Repository
 public interface ApoderadoRepository extends JpaRepository<Apoderado, Integer> {
+
+    Apoderado findApoderadoByDniAndNombres(String dni, String nombres);
+
+    Apoderado findApoderadoByNombres(String nombres);
+
+    Apoderado findApoderadoByDni(String dni);
+
+
 }

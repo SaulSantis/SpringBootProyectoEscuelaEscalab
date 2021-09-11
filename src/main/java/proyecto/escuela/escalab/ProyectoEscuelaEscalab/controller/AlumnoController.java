@@ -20,6 +20,13 @@ public class AlumnoController {
         return alumnoService.findAll();
     }
 
+    @GetMapping("/query")
+    public @ResponseBody
+    Alumno findByDniAndNombres(@RequestParam (value = "dni", required = false)String dni,
+            @RequestParam(value = "nombres", required = false) String nombres){
+        return alumnoService.findByDniAndNombres(dni,nombres);
+    }
+
     @GetMapping("/{id}")
     public @ResponseBody
     Alumno findById(@PathVariable("id") Integer id) {

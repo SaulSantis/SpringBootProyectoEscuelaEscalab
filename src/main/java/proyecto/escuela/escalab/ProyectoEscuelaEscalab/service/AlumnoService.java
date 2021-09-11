@@ -16,4 +16,5 @@ public interface AlumnoService {
 
     void deleteById(Integer id);
 
+    Alumno findByDniAndNombres(String dni, String nombre);
 }

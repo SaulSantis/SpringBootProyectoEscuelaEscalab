@@ -7,4 +7,10 @@ import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Alumno;
 @Repository
 public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
 
+    Alumno findAlumnoByDniAndNombres(String dni, String nombres);
+
+    Alumno findAlumnoByNombres(String nombres);
+
+    Alumno findAlumnoByDni(String dni);
+
 }
