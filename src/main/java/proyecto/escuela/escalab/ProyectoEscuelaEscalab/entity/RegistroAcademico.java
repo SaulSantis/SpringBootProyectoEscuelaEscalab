@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "registro_academico")
-@ApiModel(description = "Registro de un Alumno un Profesor y un curso")
+@ApiModel(description = "Realiza registro de un Alumno un Profesor y un curso")
 public class RegistroAcademico {
 
     @Id

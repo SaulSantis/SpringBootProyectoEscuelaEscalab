@@ -1,6 +1,5 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,18 +18,20 @@ import java.time.LocalDateTime;
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones(Exception ex, WebRequest request) {
+    public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones(Exception ex,
+                                                                           WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<>(er, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ExceptionResponse>(er, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public final ResponseEntity<ExceptionResponse> manejarModeloException(ConstraintViolationException ex, WebRequest request) {
+    @ExceptionHandler(ModelNotFoundException.class)
+        public final ResponseEntity<ExceptionResponse> manejarModeloException(ModelNotFoundException ex,
+                                                                          WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<>(er, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<ExceptionResponse>(er, HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers, HttpStatus status, WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<>(er, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(er, HttpStatus.BAD_REQUEST);
     }
 }
 

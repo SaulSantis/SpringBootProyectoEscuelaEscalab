@@ -1,5 +1,8 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -9,6 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "alumno")
+@ApiModel(description = "Alumno perteneciente a Api Escuela")
 public class Alumno {
 
     @Id
@@ -16,35 +20,42 @@ public class Alumno {
     @Column(name = "id_alumno")
     private Integer id;
 
+    @ApiModelProperty(notes = "Nombres debe tener entre 4 y 50 caracteres")
     @Column(name = "nombres", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar ambos Nombres")
     @NotEmpty
     private String nombres;
 
+    @ApiModelProperty(notes = "Apellidos debe tener entre 4 y 50 caracteres")
     @Column(name = "apellidos", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar ambos Apellidos")
     @NotEmpty
     private String apellidos;
 
+    @ApiModelProperty(notes = "Fecha de nacimiento no debe ser nula")
     @Column(name = "fecha_nacimiento")
     @NotNull
     private LocalDate fecha_nacimiento;
 
+    @ApiModelProperty(notes = "Dni debe tener entre 9 y 10 caracteres")
     @Column(name = "dni", length = 10)
     @Size(min = 9, max = 10, message = "Debes ingresar un Dni válido")
     @NotEmpty
     private String dni;
 
+    @ApiModelProperty(notes = "Dirección debe tener entre 4 y 50 caracteres")
     @Column(name = "direccion", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar una Dirección válida")
     @NotEmpty
     private String direccion;
 
+    @ApiModelProperty(notes = "Teléfono debe tener entre 9 y 12 caracteres")
     @Column(name = "telefono", length = 12)
     @Size(min = 9, max = 12, message = "Debes ingresar un Teléfono válido")
     @NotEmpty
     private String telefono;
 
+    @ApiModelProperty(notes = "Email debe tener entre 4 y 50 caracteres")
     @Column(name = "email", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un email válido")
     @Email(message = "Debes ingresar un email válido")
