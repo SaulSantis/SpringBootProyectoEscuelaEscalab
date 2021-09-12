@@ -1,11 +1,15 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "registro_academico")
+@ApiModel(description = "Registro de un Alumno un Profesor y un curso")
 public class RegistroAcademico {
 
     @Id
@@ -13,6 +17,7 @@ public class RegistroAcademico {
     @Column(name = "id_registro_academico")
     private Integer id;
 
+    @ApiModelProperty(notes = "Fecha de registro no debe ser nula")
     @Column(name = "fecha_registro")
     @NotNull
     private LocalDate fechaRegistro;

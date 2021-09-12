@@ -1,11 +1,15 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "asignatura")
+@ApiModel(description = "Asignaturas pertenecientes a los cursos de la Escuela")
 public class Asignatura {
 
     @Id
@@ -13,11 +17,13 @@ public class Asignatura {
     @Column(name = "id_asignatura")
     private Integer id;
 
+    @ApiModelProperty(notes = "Nombre debe tener entre 4 y 50 caracteres")
     @Column(name = "nombre", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
     @NotEmpty
     private String nombre;
 
+    @ApiModelProperty(notes = "Jornada debe tener entre 4 y 50 caracteres")
     @Column(name = "jornada", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un tipo de Jornada válido")
     @NotEmpty

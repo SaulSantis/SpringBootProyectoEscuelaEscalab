@@ -23,9 +23,10 @@ public class CursoController {
             response = List.class,
             responseContainer = "Curso")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 200, message = "OK, La lista de cursos se obtiene correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
-            @ApiResponse(code = 500, message = "No existen Cursos en la base de datos", response = ExceptionResponse.class)})
+            @ApiResponse(code = 405, message = "No se encontraron Cursos en la base de datos", response = ExceptionResponse.class)})
     @GetMapping
     public @ResponseBody
     List<Curso> findAll() {
@@ -37,17 +38,23 @@ public class CursoController {
             response = List.class,
             responseContainer = "Curso")
     @ApiResponses(value = {
-            @ApiResponse(code = 500, message = "El curso no existe o la búsqueda es nula", response = ExceptionResponse.class),
-            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionHandler.class),
-            @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
-            @ApiResponse(code = 405, message = "No se encontraron Cursos en la base de datos", response = ExceptionResponse.class),
-            @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Curso.class, responseContainer = "List")})
+            @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
+            @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @GetMapping("/{id}")
     public @ResponseBody
     Curso findById(@PathVariable("id") Integer id) {
         return cursoService.findById(id);
     }
 
+    @ApiOperation(value = "Obtener Nombre y Jornada desde Curso",
+            notes = "No necesita parámetros de entrada",
+            response = List.class,
+            responseContainer = "Curso")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
+            @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @GetMapping("/busqueda")
     public @ResponseBody
     Curso findByNombreAndJornada(@RequestParam(value = "nombre", required = false) String nombre,
@@ -55,18 +62,42 @@ public class CursoController {
         return cursoService.findByNombreAndJornada(nombre, jornada);
     }
 
+    @ApiOperation(value = "Guardar un Curso en la base de datos",
+            notes = "No necesita parámetros de entrada",
+            response = List.class,
+            responseContainer = "Curso")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK, el recurso se guarda correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
+            @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @PostMapping("/save")
     public @ResponseBody
     Curso save(@RequestBody Curso curso) {
         return cursoService.save(curso);
     }
 
+    @ApiOperation(value = "Modificar un Curso a traves de su Id",
+            notes = "No necesita parámetros de entrada",
+            response = List.class,
+            responseContainer = "Curso")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK, el recurso se modifica correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
+            @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @PutMapping("/update/{id}")
     public @ResponseBody
     Curso update(@PathVariable("id") Integer id, @RequestBody Curso curso) {
         return cursoService.update(curso, id);
     }
 
+    @ApiOperation(value = "Eliminar un Curso a traves de su Id",
+            notes = "No necesita parámetros de entrada",
+            response = List.class,
+            responseContainer = "Curso")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK, el recurso se elimina correctamente.", response = Curso.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
+            @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         cursoService.deleteById(id);

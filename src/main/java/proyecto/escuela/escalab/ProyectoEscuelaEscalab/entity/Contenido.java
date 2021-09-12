@@ -1,6 +1,8 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +10,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contenido")
+@ApiModel(description = "Contenido perteneciente a las Asignaturas de la Escuela")
 public class Contenido {
 
     @Id
@@ -15,13 +18,15 @@ public class Contenido {
     @Column(name = "id_contenido")
     private Integer id;
 
+    @ApiModelProperty(notes = "Nombre debe tener entre 4 y 50 caracteres")
     @Column(name = "nombre", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
     @NotEmpty
     private String nombre;
 
+    @ApiModelProperty(notes = "El detalle del contenido debe tener máximo 200 caracteres")
     @Column(name = "detalle_contenido", length = 200)
-    @Size(max = 200, message = "El contenido debe tener máximo 200 caracteres")
+    @Size(max = 200, message = "El detalle del contenido debe tener máximo 200 caracteres")
     @NotEmpty
     private String detalleContenido;
 

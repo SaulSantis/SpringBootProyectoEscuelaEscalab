@@ -1,5 +1,8 @@
 package proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -8,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "menu")
+@ApiModel(description = "Menú de Api")
 public class Menu {
 
     @Id
@@ -15,15 +19,18 @@ public class Menu {
     @Column(name = "id_menu")
     private Integer id;
 
+    @ApiModelProperty(notes = "Nombre debe tener entre 4 y 50 caracteres")
     @Column(name = "nombre", length = 50)
     @Size(min = 4, max = 50, message = "Debes ingresar un Nombre válido")
     @NotEmpty
     private String nombre;
 
+    @ApiModelProperty(notes = "url")
     @Column(name = "url", length = 50)
     @NotEmpty
     private String url;
 
+    @ApiModelProperty(notes = "icono")
     @Column(name = "icono")
     @NotEmpty
     private LocalDateTime icono;
