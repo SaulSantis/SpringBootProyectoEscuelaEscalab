@@ -1,10 +1,11 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.CursoRepository;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.CursoService;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public class CursoServiceImpl implements CursoService {
         Curso curso = new Curso();
         if (nombre == null || nombre.equalsIgnoreCase("")) {
             if (jornada != null && !"".equalsIgnoreCase(jornada)) {
-                curso = cursoRepository.findCursoByJornada(jornada);
+               List<Curso> cursoList = cursoRepository.findCursoByJornada(jornada);
             }
         } else {
             if (jornada == null || "".equalsIgnoreCase(jornada)) {

@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
 
+import java.util.List;
+
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
 
@@ -11,5 +13,5 @@ public interface CursoRepository extends JpaRepository<Curso, Integer> {
 
     Curso findCursoByNombre(String nombre);
 
-    Curso findCursoByJornada(String jornada);
+    List<Curso> findCursoByJornada(String jornada);
 }

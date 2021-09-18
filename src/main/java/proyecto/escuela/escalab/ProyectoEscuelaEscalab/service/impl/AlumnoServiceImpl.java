@@ -1,10 +1,11 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Alumno;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.AlumnoRepository;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.AlumnoService;
 
 import java.util.List;
 import java.util.Optional;

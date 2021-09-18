@@ -1,16 +1,17 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Apoderado;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.ApoderadoRepository;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.ApoderadoService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ApoderadoServiceImpl implements ApoderadoService{
+public class ApoderadoServiceImpl implements ApoderadoService {
 
     @Autowired
     private ApoderadoRepository apoderadoRepository;

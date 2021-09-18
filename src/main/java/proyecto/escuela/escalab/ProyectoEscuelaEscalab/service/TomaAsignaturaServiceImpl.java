@@ -2,10 +2,15 @@ package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.dto.AsignaturaDTO;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.dto.CursoDTO;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.dto.ProfesorDTO;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.dto.TomaAsignaturaDTO;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.TomaAsignatura;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.TomaAsignaturaRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,4 +67,26 @@ public class TomaAsignaturaServiceImpl implements TomaAsignaturaService {
         tomaAsignaturaRepository.deleteById(id);
     }
 
+    @Override
+    public List<TomaAsignaturaDTO> findAllTomaAsignatura() {
+        List<TomaAsignaturaDTO> response = new ArrayList<>();
+        List<TomaAsignatura> tomaAsignaturas = tomaAsignaturaRepository.findAll();
+        tomaAsignaturas.forEach(tomaAsignatura -> {
+            TomaAsignaturaDTO tomaAsignaturaDTO = new TomaAsignaturaDTO();
+            tomaAsignaturaDTO.setIdConsTomaAsignatura(tomaAsignatura.getId());
+            CursoDTO cursoDTO =new CursoDTO();
+            cursoDTO.setNombre(tomaAsignatura.getCurso().getNombre());
+            cursoDTO.setJornada(tomaAsignatura.getCurso().getJornada());
+            tomaAsignaturaDTO.setCursoDTO(cursoDTO);
+            AsignaturaDTO asignaturaDTO = new AsignaturaDTO();
+            asignaturaDTO.setNombre(tomaAsignatura.getAsignatura().getNombre());
+            tomaAsignaturaDTO.setAsignaturaDTO(asignaturaDTO);
+            ProfesorDTO profesorDTO = new ProfesorDTO();
+            profesorDTO.setNombres(tomaAsignatura.getProfesor().getNombres());
+            profesorDTO.setApellidos(tomaAsignatura.getProfesor().getApellidos());
+            tomaAsignaturaDTO.setProfesorDTO(profesorDTO);
+            response.add(tomaAsignaturaDTO);
+        });
+        return response;
+    }
 }
