@@ -1,4 +1,4 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +9,7 @@ import proyecto.escuela.escalab.ProyectoEscuelaEscalab.dto.TomaAsignaturaDTO;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.TomaAsignatura;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.TomaAsignaturaRepository;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.TomaAsignaturaService;
 
 import java.util.ArrayList;
 import java.util.List;

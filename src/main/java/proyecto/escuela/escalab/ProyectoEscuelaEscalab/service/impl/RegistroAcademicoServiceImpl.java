@@ -1,16 +1,17 @@
-package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service;
+package proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.RegistroAcademico;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.exceptions.ModelNotFoundException;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.repository.RegistroAcademicoRepository;
+import proyecto.escuela.escalab.ProyectoEscuelaEscalab.service.RegistroAcademicoService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RegistroAcademicoServiceImpl implements RegistroAcademicoService{
+public class RegistroAcademicoServiceImpl implements RegistroAcademicoService {
 
     @Autowired
     private RegistroAcademicoRepository registroAcademicoRepository;

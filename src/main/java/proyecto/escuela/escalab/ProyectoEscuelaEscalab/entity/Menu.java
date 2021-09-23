@@ -40,7 +40,7 @@ public class Menu {
             name = "menu_rol",
             joinColumns = @JoinColumn(name = "id_menu", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_rol", nullable = false))
-    private List<Rol> roles;
+    private List<Role> roles;
 
     public Integer getId() {
         return id;
@@ -74,11 +74,11 @@ public class Menu {
         this.icono = icono;
     }
 
-    public List<Rol> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Rol> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }

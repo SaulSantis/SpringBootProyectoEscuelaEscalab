@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Curso;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Profesor;
@@ -29,6 +30,7 @@ public class ProfesorController {
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
             @ApiResponse(code = 405, message = "No se encontraron Profesores en la base de datos", response = ExceptionResponse.class)})
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_USER')")
     public @ResponseBody
     List<Profesor> findAll() {
         return profesorService.findAll();
