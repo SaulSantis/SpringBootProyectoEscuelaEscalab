@@ -27,7 +27,7 @@ public class ApoderadoController {
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
             @ApiResponse(code = 405, message = "No se encontraron Apoderados en la base de datos", response = ExceptionResponse.class)})
-    @GetMapping
+    @GetMapping("/all")
     public @ResponseBody
     List<Apoderado> findAll() {
         return apoderadoService.findAll();
@@ -55,7 +55,7 @@ public class ApoderadoController {
             @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Apoderado.class, responseContainer = "List"),
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
-    @GetMapping("/busqueda")
+    @GetMapping("/dniAndNombre")
     public @ResponseBody
     Apoderado findByDniAndNombres(@RequestParam (value = "dni", required = false)String dni,
                                @RequestParam(value = "nombres", required = false) String nombres){

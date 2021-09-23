@@ -27,7 +27,7 @@ public class RegistroAcademicoController {
                 @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
                 @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
                 @ApiResponse(code = 405, message = "No se encontraron Registros Académicos en la base de datos", response = ExceptionResponse.class)})
-        @GetMapping
+        @GetMapping("/all")
         public @ResponseBody
         List<RegistroAcademico> findAll() {
                 return registroAcademicoService.findAll();

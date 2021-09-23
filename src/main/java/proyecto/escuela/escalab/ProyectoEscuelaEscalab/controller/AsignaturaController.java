@@ -27,7 +27,7 @@ public class AsignaturaController {
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
             @ApiResponse(code = 405, message = "No se encontraron Asignaturas en la base de datos", response = ExceptionResponse.class)})
-    @GetMapping
+    @GetMapping("/all")
     public @ResponseBody
     List<Asignatura> findAll() {
         return asignaturaService.findAll();
@@ -55,7 +55,7 @@ public class AsignaturaController {
             @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Asignatura.class, responseContainer = "List"),
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
-    @GetMapping("/busqueda")
+    @GetMapping("/nombreAndJornada")
     public @ResponseBody
     Asignatura findByNombreAndJornada(@RequestParam(value = "nombre", required = false) String nombre,
                                   @RequestParam(value = "jornada", required = false) String jornada) {

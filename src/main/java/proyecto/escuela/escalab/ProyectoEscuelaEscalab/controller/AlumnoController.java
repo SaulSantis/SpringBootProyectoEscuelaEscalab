@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Alumno;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.response.ExceptionResponse;
@@ -27,7 +28,7 @@ public class AlumnoController {
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class),
             @ApiResponse(code = 405, message = "No se encontraron Alumnos en la base de datos", response = ExceptionResponse.class)})
-    @GetMapping
+    @GetMapping("/all")
     public @ResponseBody
     List<Alumno> findAll() {
         return alumnoService.findAll();
@@ -55,7 +56,7 @@ public class AlumnoController {
             @ApiResponse(code = 200, message = "OK, el recurso se obtiene correctamente.", response = Alumno.class, responseContainer = "List"),
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente", response = ExceptionResponse.class),
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
-    @GetMapping("/busqueda")
+    @GetMapping("/dniAndNombre")
     public @ResponseBody
     Alumno findByDniAndNombres(@RequestParam (value = "dni", required = false)String dni,
                                @RequestParam(value = "nombres", required = false) String nombres){

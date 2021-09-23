@@ -95,23 +95,6 @@ public class UsuarioController {
 
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<Usuario>> listar(){
-//        List<Usuario> lista = userService.findAll();
-//        return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Usuario> leerPorId(@PathVariable("id") Integer id){
-//        Usuario usuario = userService.findById(id);
-//        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/getAll")
-//    public ResponseEntity<List<Usuario>> getAll(){
-//        List<Usuario> lista = userService.findAll();
-//        return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
-//    }
 
 @Data
 class RoleToUserForm{
