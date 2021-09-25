@@ -27,9 +27,9 @@ public class RegistroAcademicoServiceImpl implements RegistroAcademicoService {
     @Override
     public RegistroAcademico findById(Integer id) {
         Optional<RegistroAcademico> registroAcademicoOptional = registroAcademicoRepository.findById(id);
-        if (registroAcademicoOptional.isPresent()){
+        if (registroAcademicoOptional.isPresent()) {
             return registroAcademicoOptional.get();
-        }else {
+        } else {
             throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }

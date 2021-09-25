@@ -32,8 +32,8 @@ public class ProyectoEscuelaEscalabApplication {
             usuarioService.saveRole(new Role(null, "ROLE_ADMIN"));
 
 
-            usuarioService.saveUser(new Usuario(null, "FRANCISCO", "1234", new ArrayList<>()));
-            usuarioService.saveUser(new Usuario(null, "SAUL", "1234", new ArrayList<>()));
+            usuarioService.saveUser(new Usuario(null, "FRANCISCO", "123456", new ArrayList<>()));
+            usuarioService.saveUser(new Usuario(null, "SAUL", "123456", new ArrayList<>()));
 
 
             usuarioService.addRolToUser("FRANCISCO", "ROLE_USER");

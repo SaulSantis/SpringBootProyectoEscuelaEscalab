@@ -12,7 +12,7 @@ public interface CursoService {
 
     Curso findByNombreAndJornada(String nombre, String jornada);
 
-    Curso save(Curso curso );
+    Curso save(Curso curso);
 
     Curso update(Curso curso, Integer id);
 

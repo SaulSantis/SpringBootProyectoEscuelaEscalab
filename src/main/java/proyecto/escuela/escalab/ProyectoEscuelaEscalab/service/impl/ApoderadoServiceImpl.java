@@ -27,9 +27,9 @@ public class ApoderadoServiceImpl implements ApoderadoService {
     @Override
     public Apoderado findById(Integer id) {
         Optional<Apoderado> apoderadoOptional = apoderadoRepository.findById(id);
-        if (apoderadoOptional.isPresent()){
+        if (apoderadoOptional.isPresent()) {
             return apoderadoOptional.get();
-        }else {
+        } else {
             throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }

@@ -27,9 +27,9 @@ public class FichaMedicaServiceImpl implements FichaMedicaService {
     @Override
     public FichaMedica findById(Integer id) {
         Optional<FichaMedica> fichaMedicaOptional = fichaMedicaRepository.findById(id);
-        if (fichaMedicaOptional.isPresent()){
+        if (fichaMedicaOptional.isPresent()) {
             return fichaMedicaOptional.get();
-        }else {
+        } else {
             throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }

@@ -22,14 +22,14 @@ public class ContenidoServiceImpl implements ContenidoService {
         if (contenidoList.isEmpty())
             throw new ModelNotFoundException("No existen Contenidos en la base de datos");
         return contenidoRepository.findAll();
-}
+    }
 
     @Override
     public Contenido findById(Integer id) {
         Optional<Contenido> contenidoOptional = contenidoRepository.findById(id);
-        if (contenidoOptional.isPresent()){
+        if (contenidoOptional.isPresent()) {
             return contenidoOptional.get();
-        }else {
+        } else {
             throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }

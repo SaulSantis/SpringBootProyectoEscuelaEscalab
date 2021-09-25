@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Apoderado;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.response.ExceptionResponse;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/apoderado")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class ApoderadoController {
 
     @Autowired
@@ -57,9 +59,9 @@ public class ApoderadoController {
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @GetMapping("/dniAndNombre")
     public @ResponseBody
-    Apoderado findByDniAndNombres(@RequestParam (value = "dni", required = false)String dni,
-                               @RequestParam(value = "nombres", required = false) String nombres){
-        return apoderadoService.findByDniAndNombres(dni,nombres);
+    Apoderado findByDniAndNombres(@RequestParam(value = "dni", required = false) String dni,
+                                  @RequestParam(value = "nombres", required = false) String nombres) {
+        return apoderadoService.findByDniAndNombres(dni, nombres);
     }
 
     @ApiOperation(value = "Guardar un Apoderado en la base de datos",

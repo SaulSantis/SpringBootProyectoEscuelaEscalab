@@ -27,7 +27,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
 
     @ExceptionHandler(ModelNotFoundException.class)
-        public final ResponseEntity<ExceptionResponse> manejarModeloException(ModelNotFoundException ex,
+    public final ResponseEntity<ExceptionResponse> manejarModeloException(ModelNotFoundException ex,
                                                                           WebRequest request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(),
                 request.getDescription(false));

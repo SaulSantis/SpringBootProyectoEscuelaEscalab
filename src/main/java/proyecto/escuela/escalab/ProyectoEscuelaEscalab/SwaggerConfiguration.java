@@ -28,6 +28,7 @@ public class SwaggerConfiguration {
             "Apache 2.0",
             "http://www.apache.org/licenses/LICENSE 2.0",
             new ArrayList<VendorExtension>());
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(DEFAULT_API_INFO);

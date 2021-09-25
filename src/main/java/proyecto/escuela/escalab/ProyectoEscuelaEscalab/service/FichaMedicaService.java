@@ -5,7 +5,7 @@ import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.FichaMedica;
 
 import java.util.List;
 
-public interface FichaMedicaService{
+public interface FichaMedicaService {
 
 
     List<FichaMedica> findAll();

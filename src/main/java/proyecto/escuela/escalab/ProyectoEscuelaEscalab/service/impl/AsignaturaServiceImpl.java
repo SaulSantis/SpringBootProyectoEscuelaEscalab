@@ -27,9 +27,9 @@ public class AsignaturaServiceImpl implements AsignaturaService {
     @Override
     public Asignatura findById(Integer id) {
         Optional<Asignatura> asignaturaOptional = asignaturaRepository.findById(id);
-        if (asignaturaOptional.isPresent()){
+        if (asignaturaOptional.isPresent()) {
             return asignaturaOptional.get();
-        }else {
+        } else {
             throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }

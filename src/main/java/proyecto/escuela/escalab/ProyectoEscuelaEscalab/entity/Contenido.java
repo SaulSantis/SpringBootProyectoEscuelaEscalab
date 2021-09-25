@@ -31,7 +31,7 @@ public class Contenido {
     private String detalleContenido;
 
     @ManyToOne
-    @JoinColumn(name = "id_asignatura",nullable = false)
+    @JoinColumn(name = "id_asignatura", nullable = false)
     @JsonIgnoreProperties("contenido")
     private Asignatura asignatura;
 

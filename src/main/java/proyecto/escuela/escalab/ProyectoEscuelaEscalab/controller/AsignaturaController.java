@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Asignatura;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.response.ExceptionResponse;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/asignatura")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class AsignaturaController {
 
     @Autowired
@@ -58,7 +60,7 @@ public class AsignaturaController {
     @GetMapping("/nombreAndJornada")
     public @ResponseBody
     Asignatura findByNombreAndJornada(@RequestParam(value = "nombre", required = false) String nombre,
-                                  @RequestParam(value = "jornada", required = false) String jornada) {
+                                      @RequestParam(value = "jornada", required = false) String jornada) {
         return asignaturaService.findByNombreAndJornada(nombre, jornada);
     }
 

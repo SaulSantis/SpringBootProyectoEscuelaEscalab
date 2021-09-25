@@ -39,7 +39,7 @@ public class CursoServiceImpl implements CursoService {
         Curso curso = new Curso();
         if (nombre == null || nombre.equalsIgnoreCase("")) {
             if (jornada != null && !"".equalsIgnoreCase(jornada)) {
-               List<Curso> cursoList = cursoRepository.findCursoByJornada(jornada);
+                List<Curso> cursoList = cursoRepository.findCursoByJornada(jornada);
             }
         } else {
             if (jornada == null || "".equalsIgnoreCase(jornada)) {

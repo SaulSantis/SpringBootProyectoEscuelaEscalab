@@ -27,9 +27,9 @@ public class ProfesorServiceImpl implements ProfesorService {
     @Override
     public Profesor findById(Integer id) {
         Optional<Profesor> profesorOptional = profesorRepository.findById(id);
-        if (profesorOptional.isPresent()){
+        if (profesorOptional.isPresent()) {
             return profesorOptional.get();
-        }else {
+        } else {
             throw new ModelNotFoundException("" + id + " no existe en nuestra base de datos");
         }
     }

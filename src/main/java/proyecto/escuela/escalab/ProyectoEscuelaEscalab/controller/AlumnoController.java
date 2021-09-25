@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/alumno")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class AlumnoController {
 
     @Autowired
@@ -58,9 +59,9 @@ public class AlumnoController {
             @ApiResponse(code = 404, message = "No encontrado", response = ExceptionResponse.class)})
     @GetMapping("/dniAndNombre")
     public @ResponseBody
-    Alumno findByDniAndNombres(@RequestParam (value = "dni", required = false)String dni,
-                               @RequestParam(value = "nombres", required = false) String nombres){
-        return alumnoService.findByDniAndNombres(dni,nombres);
+    Alumno findByDniAndNombres(@RequestParam(value = "dni", required = false) String dni,
+                               @RequestParam(value = "nombres", required = false) String nombres) {
+        return alumnoService.findByDniAndNombres(dni, nombres);
     }
 
     @ApiOperation(value = "Guardar un Alumno en la base de datos",

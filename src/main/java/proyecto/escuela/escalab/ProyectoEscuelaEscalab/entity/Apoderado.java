@@ -68,8 +68,8 @@ public class Apoderado {
     @NotEmpty
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "id_alumno", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_alumno", nullable = false, updatable = false)
     private Alumno alumno;
 
     public Integer getId() {

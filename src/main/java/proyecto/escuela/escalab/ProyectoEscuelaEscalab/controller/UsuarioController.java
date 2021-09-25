@@ -8,6 +8,7 @@ import lombok.Data;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import proyecto.escuela.escalab.ProyectoEscuelaEscalab.entity.Role;
@@ -30,30 +31,31 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/usuarios")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Usuario>>getUsers() {
+    public ResponseEntity<List<Usuario>> getUsers() {
         return ResponseEntity.ok().body(usuarioService.getUsers());
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Usuario>saveUser(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> saveUser(@RequestBody Usuario usuario) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/usuarios/save").toUriString());
         return ResponseEntity.created(uri).body(usuarioService.saveUser(usuario));
     }
 
     @PostMapping("/rol/save")
-    public ResponseEntity<Role>saveRol(@RequestBody Role role) {
+    public ResponseEntity<Role> saveRol(@RequestBody Role role) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/usuarios/rol/save").toUriString());
         return ResponseEntity.ok().body(usuarioService.saveRole(role));
     }
 
     @PostMapping("/rol/addToUser")
-    public ResponseEntity<?>addRoleToUser(@RequestBody RoleToUserForm form) {
+    public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserForm form) {
         usuarioService.addRolToUser(form.getUsername(), form.getNombreRol());
         return ResponseEntity.ok().build();
     }
@@ -93,11 +95,11 @@ public class UsuarioController {
         }
     }
 
-    }
+}
 
 
 @Data
-class RoleToUserForm{
+class RoleToUserForm {
     private String username;
     private String nombreRol;
 }

@@ -19,6 +19,4 @@ public interface AsignaturaService {
     void deleteById(Integer id);
 
 
-
-
 }
