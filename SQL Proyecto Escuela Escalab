@@ -1,0 +1,61 @@
+INSERT INTO alumno(nombres,apellidos,fecha_nacimiento,dni,direccion,telefono,email,imagen) VALUES ('Francisco León','Santibáñez Mora','2013-11-03','24987654-K','Calle falsa 999','56965429876','francisco@correo.com','imagen referencial');
+INSERT INTO alumno(nombres,apellidos,fecha_nacimiento,dni,direccion,telefono,email,imagen) VALUES ('Julio Javier','Jarros Jadue','2012-04-19','23787165-1','Calle 1 entre rejas','56447651879','julio@correo.com','imagen referencial');
+INSERT INTO alumno(nombres,apellidos,fecha_nacimiento,dni,direccion,telefono,email,imagen) VALUES ('Pedro Pablo','Barrera Pradenas','2013-10-12','24298156-7','Calle Argentina 2021','56773658291','pedro@correo.com','imagen referencial');
+INSERT INTO alumno(nombres,apellidos,fecha_nacimiento,dni,direccion,telefono,email,imagen) VALUES ('Juliana Joaquina','Mora Jara','2013-01-22','23787541-0','Calle larga 757','56991098749','juliana@correo.com','imagen referencial');
+
+INSERT INTO curso(nombre,jornada) VALUES ('Primero A','Mañana');
+INSERT INTO curso(nombre,jornada) VALUES ('Primero B','Mañana');
+INSERT INTO curso(nombre,jornada) VALUES ('Segundo A','Tarde');
+INSERT INTO curso(nombre,jornada) VALUES ('Segundo B','Tarde');
+
+INSERT INTO profesor(nombres,apellidos,dni,direccion,telefono,email,imagen) VALUES ('Peter','Parra Ponce','13987654-1','Calle A 987','58191840264','peter@correo.com','imagen referencial');
+INSERT INTO profesor(nombres,apellidos,dni,direccion,telefono,email,imagen) VALUES ('Luciana','Lara Loncon','16827651-0','Calle B 654','56915625498','luciana@correo.com','imagen referencial');
+INSERT INTO profesor(nombres,apellidos,dni,direccion,telefono,email,imagen) VALUES ('Daniela','Duque Diaz','17291777-k','Calle C 321','56469871428','daniela@correo.com','imagen referencial');
+INSERT INTO profesor(nombres,apellidos,dni,direccion,telefono,email,imagen) VALUES ('Silvia','Soto Saravia','14029817-1','Calle D 975','56961052786','silvia@correo.com','imagen referencial');
+
+INSERT INTO asignatura (nombre,jornada,horario) VALUES ('Castellano','Mañana','08:00');
+INSERT INTO asignatura (nombre,jornada,horario) VALUES ('Inglés','Mañana','10:00');
+INSERT INTO asignatura (nombre,jornada,horario) VALUES ('Matemáticas','Mañana','11:30');
+INSERT INTO asignatura (nombre,jornada,horario) VALUES ('Historia','Tarde','13:00');
+
+INSERT INTO contenido (nombre,detalle_contenido,id_asignatura) VALUES ('Contenido 1','Este es el detalle del contenido 1',1);
+INSERT INTO contenido (nombre,detalle_contenido,id_asignatura) VALUES ('Contenido 2','Este es el detalle del contenido 2',2);
+INSERT INTO contenido (nombre,detalle_contenido,id_asignatura) VALUES ('Contenido 3','Este es el detalle del contenido 3',3);
+INSERT INTO contenido (nombre,detalle_contenido,id_asignatura) VALUES ('Contenido 4','Este es el detalle del contenido 4',4);
+
+INSERT INTO apoderado(nombres,apellidos,parentesco,fecha_nacimiento,dni,direccion,telefono,email,id_alumno) 
+VALUES ('Saúl Alberto','Santibáñez Ibañez','Padre','1984-01-29','15824111-k','Calle falsa 999','56991762876','saul@correo.com',1);
+INSERT INTO apoderado(nombres,apellidos,parentesco,fecha_nacimiento,dni,direccion,telefono,email,id_alumno) 
+VALUES ('Jesus','Jarros Navarro','Padre','1990-04-12','11768156-0','Calle 1 entre rejas','5681082917','jesus@correo.com',2);
+INSERT INTO apoderado(nombres,apellidos,parentesco,fecha_nacimiento,dni,direccion,telefono,email,id_alumno) 
+VALUES ('Germán','Barrera Barrera','Padre','1987-12-10','15910723-1','Calle Argentina 2021','54991075287','german@correo.com',3);
+INSERT INTO apoderado(nombres,apellidos,parentesco,fecha_nacimiento,dni,direccion,telefono,email,id_alumno) 
+VALUES ('Paola Andrea','Mora Lopez','Padre','1989-10-12','13061091-1','Calle larga 757','58191840264','paola@correo.com',4);
+
+INSERT INTO ficha_medica(fecha,edad,peso,estatura,diabetico,problemas_corazon,alergias,discapacidad,imagen,id_alumno) 
+VALUES ('2021-09-08','8','24','1.21','NO','NO','NO','No','imagen referencial',1);
+INSERT INTO ficha_medica(fecha,edad,peso,estatura,diabetico,problemas_corazon,alergias,discapacidad,imagen,id_alumno) 
+VALUES ('2021-09-08','7','22.5','1.12','NO','NO','NO','No','imagen referencial',2);
+INSERT INTO ficha_medica(fecha,edad,peso,estatura,diabetico,problemas_corazon,alergias,discapacidad,imagen,id_alumno) 
+VALUES ('2021-09-08','7','21.80','1.18','NO','NO','NO','No','imagen referencial',3);
+INSERT INTO ficha_medica(fecha,edad,peso,estatura,diabetico,problemas_corazon,alergias,discapacidad,imagen,id_alumno) 
+VALUES ('2021-09-08','9','26.12','1.27','NO','NO','NO','No','imagen referencial',4);
+
+INSERT INTO registro_academico(fecha_registro,id_alumno,id_profesor,id_curso) 
+VALUES ('2021-09-08',1,1,1);
+INSERT INTO registro_academico(fecha_registro,id_alumno,id_profesor,id_curso) 
+VALUES ('2021-09-08',2,2,2);
+INSERT INTO registro_academico(fecha_registro,id_alumno,id_profesor,id_curso) 
+VALUES ('2021-09-08',3,3,3);
+INSERT INTO registro_academico(fecha_registro,id_alumno,id_profesor,id_curso) 
+VALUES ('2021-09-08',4,4,4);
+
+INSERT INTO toma_asignatura(fecha_registro,id_asignatura,id_curso,id_profesor) 
+VALUES ('2021-09-08',1,1,1);
+INSERT INTO toma_asignatura(fecha_registro,id_asignatura,id_curso,id_profesor) 
+VALUES ('2021-09-08',2,2,2);
+INSERT INTO toma_asignatura(fecha_registro,id_asignatura,id_curso,id_profesor) 
+VALUES ('2021-09-08',3,3,3);
+INSERT INTO toma_asignatura(fecha_registro,id_asignatura,id_curso,id_profesor) 
+VALUES ('2021-09-08',4,4,4);
+
