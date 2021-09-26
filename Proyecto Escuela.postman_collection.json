@@ -1,0 +1,2129 @@
+{
+	"info": {
+		"_postman_id": "4a56a743-e7c8-4ba0-98b5-761b139f8fc0",
+		"name": "Proyecto Escuela",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alumno",
+			"item": [
+				{
+					"name": "findAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:8080/alumno/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alumno",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:8080/alumno/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alumno",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveAlumno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombres\": \"Loco\",\r\n    \"apellidos\": \"Santibáñez\",\r\n    \"fecha_nacimiento\": \"2013-11-03\",\r\n    \"dni\": \"158241110\",\r\n    \"direccion\": \"Calle la misma del Papá\",\r\n    \"telefono\": \"56965429876\",\r\n    \"email\": \"francisco@correo.com\",\r\n    \"imagen\": \"imagen referencial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/alumno/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alumno",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAlumno",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"nombres\": \"Julio Pablo\",\r\n    \"apellidos\": \"Barrera Pradenas\",\r\n    \"fecha_nacimiento\": \"2013-10-12\",\r\n    \"dni\": \"24298156-7\",\r\n    \"direccion\": \"Calle Argentina 2021\",\r\n    \"telefono\": \"56773658291\",\r\n    \"email\": \"pedro@correo.com\",\r\n    \"imagen\": \"imagen referencial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/alumno/update/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alumno",
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAlumno",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/alumno/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alumno",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "finByDniAndNombre",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/alumno/dniAndNombre?dni=24987654-K&nombres=Francisco León",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alumno",
+								"dniAndNombre"
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "24987654-K"
+								},
+								{
+									"key": "nombres",
+									"value": "Francisco León"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Curso",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/curso/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"curso",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/curso/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"curso",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveCurso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"El curso de los Locos\",\r\n    \"jornada\": \"Noche\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/curso/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"curso",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCurso",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"nombre\": \"El curso de los Locos\",\r\n        \"jornada\": \"Noche\",\r\n    \"asignatura\":[{\r\n        \"id\": 2,\r\n                \"nombre\": \"Ingles\",\r\n                \"jornada\": \"Mañana\",\r\n                \"horario\": \"08:00\"\r\n    },{\r\n        \"id\": 1,\r\n        \"nombre\": \"Matemáticas\",\r\n        \"jornada\": \"Mañana\",\r\n        \"horario\": \"10:00\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/curso/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"curso",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCursoById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/curso/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"curso",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByNameAndJornada",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/curso/nombreAndJornada?jornada=Tarde&nombre=Segundo A",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"curso",
+								"nombreAndJornada"
+							],
+							"query": [
+								{
+									"key": "jornada",
+									"value": "Tarde"
+								},
+								{
+									"key": "nombre",
+									"value": "Segundo A"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profesor",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/profesor/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"profesor",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/profesor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"profesor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveProfesor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombres\": \"Jimmy\",\r\n    \"apellidos\": \"Neutron\",\r\n    \"dni\": \"182561987\",\r\n    \"direccion\": \"Cartoon Network\",\r\n    \"telefono\": \"996571546\",\r\n    \"email\": \"jimmy@correo.com\",\r\n    \"imagen\": \"imagen referencial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/profesor/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"profesor",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfesor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombres\": \"Peter\",\r\n        \"apellidos\": \"Parra Palacios\",\r\n        \"dni\": \"13987654-1\",\r\n        \"direccion\": \"Calle A 987\",\r\n        \"telefono\": \"58191840264\",\r\n        \"email\": \"peter@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/profesor/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"profesor",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProfesor",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/profesor/delete/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"profesor",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asignatura",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/asignatura/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asignatura",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/asignatura/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asignatura",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveAsignatura",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Instagram Avanzado\",\r\n    \"jornada\": \"Mañana\",\r\n    \"horario\": \"11:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/asignatura/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asignatura",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAsignatura",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Instagram Avanzado\",\r\n    \"jornada\": \"Mañana\",\r\n    \"horario\": \"11:00\",\r\n    \"curso\": [\r\n        {\r\n            \"id\": 1,\r\n            \"nombre\": \" Segundo A\",\r\n            \"jornada\": \"Mañana\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/asignatura/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asignatura",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAsignaturaById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/asignatura/delete/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asignatura",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByNameAndJornada",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/asignatura/nombreAndJornada?nombre=Inglés&jornada=Mañana",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"asignatura",
+								"nombreAndJornada"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Inglés"
+								},
+								{
+									"key": "jornada",
+									"value": "Mañana"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contenidos",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/contenido/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contenido",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findContendosById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/contenido/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contenido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveContenido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Contenido Ultra Hiper Avanzado\",\r\n    \"detalleContenido\": \"Este contenido se aplica a la asignatura.\",\r\n    \"asignatura\":{\r\n        \"id\": 1,\r\n        \"nombre\": \"Ingles\",\r\n        \"jornada\": \"Mañana\",\r\n        \"horario\": \"10:00\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contenido/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contenido",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateContenido",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"Contenido Update\",\r\n        \"detalleContenido\": \"Este es el detalle del contenido al que se le hizo UPDATE\",\r\n        \"asignatura\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"Instagram Avanzado\",\r\n            \"jornada\": \"Mañana\",\r\n            \"horario\": \"11:00\"\r\n        }\r\n    },",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contenido/update/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contenido",
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteContenido",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "ProfesorAuthorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/contenido/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contenido",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apoderado",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/apoderado/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apoderado",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findApoderadoById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/apoderado/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apoderado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveApoderado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombres\": \"Chola\",\r\n    \"apellidos\": \"Rojas\",\r\n    \"parentesco\": \"Mamá\",\r\n    \"fecha_nacimiento\": \"1990-08-15\",\r\n    \"dni\": \"160341118\",\r\n    \"direccion\": \"Calle de tierra 123\",\r\n    \"telefono\": \"56965429876\",\r\n    \"email\": \"chola@correo.com\",\r\n    \"alumno\": {\r\n        \"id\": 1,\r\n        \"nombres\": \"Loco\",\r\n        \"apellidos\": \"Santibáñez\",\r\n        \"fecha_nacimiento\": \"2013-11-03\",\r\n        \"dni\": \"158241110\",\r\n        \"direccion\": \"Calle la misma del Papá\",\r\n        \"telefono\": \"56965429876\",\r\n        \"email\": \"francisco@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/apoderado/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apoderado",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateApoderado",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombres\": \"Saúl Alberto\",\r\n        \"apellidos\": \"Santibáñez Ibañez\",\r\n        \"parentesco\": \"Super Heroe\",\r\n        \"fecha_nacimiento\": \"1984-01-29\",\r\n        \"dni\": \"15824111-k\",\r\n        \"direccion\": \"Calle falsa 999\",\r\n        \"telefono\": \"56991762876\",\r\n        \"email\": \"saul@correo.com\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombres\": \"Francisco León\",\r\n            \"apellidos\": \"Santibáñez Mora\",\r\n            \"fecha_nacimiento\": \"2013-11-03\",\r\n            \"dni\": \"24987654-K\",\r\n            \"direccion\": \"Calle falsa 999\",\r\n            \"telefono\": \"56965429876\",\r\n            \"email\": \"francisco@correo.com\",\r\n            \"imagen\": \"imagen referencial\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/apoderado/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apoderado",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteApoderado",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/apoderado/delete/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apoderado",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "finByDniAndNombre",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/apoderado/dniAndNombre?dni=15824111-k&nombres=Saúl Alberto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apoderado",
+								"dniAndNombre"
+							],
+							"query": [
+								{
+									"key": "dni",
+									"value": "15824111-k"
+								},
+								{
+									"key": "nombres",
+									"value": "Saúl Alberto"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ficha Medica",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ficha_medica/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ficha_medica",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findFichaMedicaById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Profesor Authorization",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "User Authorization",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ficha_medica/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ficha_medica",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveFichaMedica",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"2021-09-01\",\r\n    \"edad\": 8,\r\n    \"peso\": 23,\r\n    \"estatura\": 1.22,\r\n    \"diabetico\": \"false\",\r\n    \"problemas_corazon\": \"false\",\r\n    \"alergias\": \"true\",\r\n    \"discapacidad\": \"false\",\r\n    \"imagen\": \"imagen referencial\",\r\n    \"alumno\":{\r\n        \"id\": 5,\r\n        \"nombres\": \"Loco\",\r\n        \"apellidos\": \"Santibáñez\",\r\n        \"fecha_nacimiento\": \"2013-11-03\",\r\n        \"dni\": \"158241110\",\r\n        \"direccion\": \"Calle la misma del Papá\",\r\n        \"telefono\": \"56965429876\",\r\n        \"email\": \"francisco@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ficha_medica/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ficha_medica",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFichaMedica",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"fecha\": \"2021-09-08\",\r\n        \"edad\": 7,\r\n        \"peso\": 24.0,\r\n        \"estatura\": 1.21,\r\n        \"diabetico\": false,\r\n        \"problemas_corazon\": false,\r\n        \"alergias\": false,\r\n        \"discapacidad\": false,\r\n        \"imagen\": \"imagen referencial\",\r\n        \"alumno\": {\r\n            \"id\": 1,\r\n            \"nombres\": \"Francisco León\",\r\n            \"apellidos\": \"Santibáñez Mora\",\r\n            \"fecha_nacimiento\": \"2013-11-03\",\r\n            \"dni\": \"24987654-K\",\r\n            \"direccion\": \"Calle falsa 999\",\r\n            \"telefono\": \"56965429876\",\r\n            \"email\": \"francisco@correo.com\",\r\n            \"imagen\": \"imagen referencial\"\r\n        }\r\n    },",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ficha_medica/update/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ficha_medica",
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFichaMedica",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ficha_medica/delete/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ficha_medica",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registro Académico",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/registro_academico/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro_academico",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/registro_academico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro_academico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveRegistroAcademico",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2021-09-07\",\r\n    \"alumno\": {\r\n        \"id\": 1,\r\n        \"nombres\": \"Pato\",\r\n        \"apellidos\": \"Carlos\",\r\n        \"fechaNacimiento\": \"2013-11-03\",\r\n        \"dni\": \"24987654-0\",\r\n        \"direccion\": \"Calle la misma del Papá\",\r\n        \"telefono\": \"56965429876\",\r\n        \"email\": \"francisco@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    },\r\n    \"profesor\": {\r\n        \"id\": 1,\r\n        \"nombres\": \"Susana\",\r\n        \"apellidos\": \"Orias\",\r\n        \"dni\": \"987654321\",\r\n        \"direccion\": \"Departamento, Chile\",\r\n        \"telefono\": \"5697054721\",\r\n        \"email\": \"saul@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    },\r\n    \"curso\": {\r\n        \"id\": 1,\r\n        \"nombre\": \"Primero A\",\r\n        \"jornada\": \"Mañana\"\r\n    }\r\n\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/registro_academico/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro_academico",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRegistroAcademico",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2020-11-03\",\r\n    \"alumno\": {\r\n        \"id\": 1,\r\n        \"nombres\": \"Francisco León\",\r\n        \"apellidos\": \"Santibáñez Mora\",\r\n        \"fecha_nacimiento\": \"2013-11-03\",\r\n        \"dni\": \"24987654-K\",\r\n        \"direccion\": \"Calle falsa 999\",\r\n        \"telefono\": \"56965429876\",\r\n        \"email\": \"francisco@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    },\r\n    \"profesor\": {\r\n        \"id\": 1,\r\n        \"nombres\": \"Peter\",\r\n        \"apellidos\": \"Parra Ponce\",\r\n        \"dni\": \"13987654-1\",\r\n        \"direccion\": \"Calle A 987\",\r\n        \"telefono\": \"58191840264\",\r\n        \"email\": \"peter@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    },\r\n    \"curso\": {\r\n        \"id\": 1,\r\n        \"nombre\": \"Primero A\",\r\n        \"jornada\": \"Mañana\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/registro_academico/update/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro_academico",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRegistroAcademicoById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/registro_academico/delete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro_academico",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Toma de asignatura",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/toma_asignatura/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toma_asignatura",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/toma_asignatura/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toma_asignatura",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveTomaAsignatura",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2021-09-07\",    \r\n    \"asignatura\": {\r\n        \"id\": 1,\r\n        \"nombre\": \"Ingles\",\r\n        \"jornada\": \"Mañana\",\r\n        \"horario\": \"10:00\"        \r\n    },\r\n    \"curso\": {\r\n        \"id\": 1,\r\n        \"nombre\": \"Primero A\",\r\n        \"jornada\": \"Mañana\"\r\n    },    \r\n    \"profesor\": {\r\n        \"id\": 1,\r\n        \"nombres\": \"Saúl\",\r\n        \"apellidos\": \"Santibáñez\",\r\n        \"dni\": \"987654321\",\r\n        \"direccion\": \"Departamento, Chile\",\r\n        \"telefono\": \"5697054721\",\r\n        \"email\": \"saul@correo.com\",\r\n        \"imagen\": \"imagen referencial\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/toma_asignatura/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toma_asignatura",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTomaAsignatura",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"fechaRegistro\": \"2021-09-25\",\r\n        \"asignatura\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"Castellano\",\r\n            \"jornada\": \"Mañana\",\r\n            \"horario\": \"08:00\"\r\n        },\r\n        \"curso\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"Primero A\",\r\n            \"jornada\": \"Mañana\"\r\n        },\r\n        \"profesor\": {\r\n            \"id\": 1,\r\n            \"nombres\": \"Peter\",\r\n            \"apellidos\": \"Parra Ponce\",\r\n            \"dni\": \"13987654-1\",\r\n            \"direccion\": \"Calle A 987\",\r\n            \"telefono\": \"58191840264\",\r\n            \"email\": \"peter@correo.com\",\r\n            \"imagen\": \"imagen referencial\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/toma_asignatura/update/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toma_asignatura",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTomaAsignatura",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/toma_asignatura/delete/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toma_asignatura",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TomaAsignatura, findAll DTO",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/toma_asignatura/dto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toma_asignatura",
+								"dto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Usuarios finAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"description": "Admin Authorization"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveUsuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"PAOLA\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Rol To User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"PAOLA\",\r\n    \"nombreRol\": \"ROLE_SUPER_SAYAYIN\"\r\n            \r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/rol/addToUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"rol",
+								"addToUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userName",
+									"value": "SAUL",
+									"description": "Login Admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "Password Admin",
+									"type": "text"
+								},
+								{
+									"key": "userName",
+									"value": "GERMAN",
+									"description": "Login Profesor",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "Password Profesor",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "userName",
+									"value": "FRANCISCO",
+									"description": "Login Usuario",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "Password Usuario",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rol",
+			"item": [
+				{
+					"name": "Rol saveRol",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"description": "Admin Authorization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreRol\": \"ROLE_SUPER_SAYAYIN\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/rol/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"rol",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
