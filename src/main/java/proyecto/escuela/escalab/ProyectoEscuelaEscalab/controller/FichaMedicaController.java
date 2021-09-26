@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ficha_medica")
-@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class FichaMedicaController {
 
     @Autowired

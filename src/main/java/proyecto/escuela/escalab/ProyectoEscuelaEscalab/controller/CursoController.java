@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/curso")
-@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class CursoController {
 
     @Autowired

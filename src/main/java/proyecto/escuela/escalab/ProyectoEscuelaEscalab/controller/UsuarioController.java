@@ -31,7 +31,6 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/usuarios")
-@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 public class UsuarioController {
 
     @Autowired
