@@ -38,39 +38,47 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         customAuthenticationFilter.setFilterProcessesUrl("/login/**");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/login/**", "/token/refresh/**").permitAll();
+        http.authorizeRequests().antMatchers("/login/**", "/token/refresh/**", "/swagger-ui.html/**").permitAll();
         http.authorizeRequests().antMatchers(DELETE, "/alumno/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/alumno/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/alumno/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/alumno/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/curso/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/curso/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/curso/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/curso/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/profesor/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/profesor/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/profesor/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/profesor/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/asignatura/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/asignatura/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/asignatura/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/asignatura/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/contenido/delete/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR");
         http.authorizeRequests().antMatchers(POST, "/contenido/save/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR");
         http.authorizeRequests().antMatchers(PUT, "/contenido/update/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR");
         http.authorizeRequests().antMatchers(GET, "/contenido/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/apoderado/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/apoderado/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/apoderado/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/apoderado/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/ficha_medica/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/ficha_medica/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/ficha_medica/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/ficha_medica/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(DELETE, "/usuarios/delete/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/usuarios/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/usuarios/update/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/usuarios/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_PROFESOR", "ROLE_USER");
+
         http.authorizeRequests().antMatchers(POST, "/rol/save/**", "/rol/addToUser/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
